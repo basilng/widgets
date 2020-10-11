@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Search = () => {
   const [term, setTerm] = useState("");
-  //called only once at the inital render
+
   useEffect(() => {
-    console.log("I only run once");
-  }, []);
-  //call every time when the component rerender
-  useEffect(() => {
-    console.log("I only run once");
-  });
-  //call every time when the compoent rerender and eaither of the state chagne
-  useEffect(() => {
-    console.log("I only run once");
-  }, [ere, term2, tem3]);
+    const searchWiki = async () => {
+      await axios.get("");
+    };
+    searchWiki();
+  }, [term]);
 
   return (
     <div>
