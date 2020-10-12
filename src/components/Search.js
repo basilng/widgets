@@ -18,9 +18,12 @@ const Search = () => {
       });
       setResults(data.query.search);
     };
-    if (term) {
-      searchWiki();
-    }
+
+    setTimeout(() => {
+      if (term) {
+        searchWiki();
+      }
+    }, 500);
   }, [term]);
 
   const renderedResults = resuts.map((result) => {
