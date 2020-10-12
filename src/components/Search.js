@@ -6,28 +6,27 @@ const Search = () => {
   const [resuts, setResults] = useState([]);
 
   useEffect(() => {
-    // const searchWiki = async () => {
-    //   const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
-    //     params: {
-    //       action: "query",
-    //       list: "search",
-    //       origin: "*",
-    //       format: "json",
-    //       srsearch: term,
-    //     },
-    //   });
-    //   setResults(data.query.search);
-    // };
+    const searchWiki = async () => {
+      const { data } = await axios.get("https://en.wikipedia.org/w/api.php", {
+        params: {
+          action: "query",
+          list: "search",
+          origin: "*",
+          format: "json",
+          srsearch: term,
+        },
+      });
+      setResults(data.query.search);
+    };
 
-    // const timeoutId = setTimeout(() => {
-    //   if (term) {
-    //     searchWiki();
-    //   }
-    // }, 500);
-    console.log("Initial render or term was changed");
+    const timeoutId = setTimeout(() => {
+      if (term) {
+        searchWiki();
+      }
+    }, 500);
 
     return () => {
-      console.log("CLEANIP");
+      clearTimeout(timeoutId);
     };
   }, [term]);
 
