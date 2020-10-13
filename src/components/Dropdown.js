@@ -21,14 +21,18 @@ const Dropdown = ({ selected, onSelectedChange, options }) => {
   });
 
   useEffect(() => {
-    //manual click event
-    document.body.addEventListener("click", (event) => {
-      //if the click is happened on the inside the component then do nothin
+    const onBodyClick = (event) => {
       if (ref.current.contains(event.target)) {
         return;
       }
       setOpen(false);
-    });
+    };
+    //manual click event
+    document.body.addEventListener("click", onBodyClick);
+
+    return () => {
+      document.body.removeEventListener("click", onBodyClick);
+    };
   }, []);
 
   return (
