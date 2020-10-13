@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Dropdown = ({ selected, onSelectedChange, options }) => {
   const [open, setOpen] = useState(false);
@@ -17,6 +17,11 @@ const Dropdown = ({ selected, onSelectedChange, options }) => {
     );
   });
 
+  useEffect(() => {
+    document.body.addEventListener("click", () => {
+      setOpen(false);
+    });
+  }, []);
   return (
     <div className="ui form">
       <div className="field">
